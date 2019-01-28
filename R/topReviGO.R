@@ -98,7 +98,8 @@ topReviGO <- function(geneList, prefix, mapFile, ontology = "BP",
   aRevigorer = "aRevigorer.txt"
   utils::write.table(allResInf1[,c("GO.ID", "weightFisher")], file=aRevigorer,
               quote=F, row.names=F, col.names=F)
-  system(command = paste0("python ", revigoDownloadLocation, " -tsap ",
+  # EDIT: sd21 190128 - changed options from "-tsap" to "-p" to allow it to write the scatter data and R command to disk
+  system(command = paste0("python ", revigoDownloadLocation, " -p ",
                           prefix, " ", aRevigorer))
   file.remove(aRevigorer)
   revigo.data <- utils::read.csv(paste0(prefix, "_treemap.csv"), skip = 4)
