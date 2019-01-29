@@ -80,7 +80,7 @@ topReviGO <- function(geneList, prefix, mapFile, ontology = "BP",
   # Output the pvalues for the test
   utils::write.table(allRes, file=paste0(prefix, "_weightFisher.csv"),
                      quote=F, row.names=F, col.names=T)
-  # EDIT: sd21 190129 - added "as.numeric" as it was not recognising scietific notation in highly sig. GO terms.
+  # EDIT: sd21 190129 - added "as.numeric" as it was not recognising scietific notation in highly sig. GO terms. 
   allResInf1 <- allRes[as.numeric(allRes$weightFisher) < p,]
   if(nrow(allResInf1) == 0){
     stop("No gene has been found above the p value. Stopping now.
