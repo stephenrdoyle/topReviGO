@@ -101,7 +101,8 @@ topReviGO <- function(geneList, prefix, mapFile, ontology = "BP",
   # EDIT: sd21 190128 - changed options from "-tsap" to "-p" to allow it to write the scatter data and R command to disk
   system(command = paste0("python ", revigoDownloadLocation, " -p ",
                           prefix, " ", aRevigorer))
-  file.remove(aRevigorer)
+  # EDIT: sd21 190129 - hashed the file.remove command
+  #file.remove(aRevigorer)
   revigo.data <- utils::read.csv(paste0(prefix, "_treemap.csv"), skip = 4)
   revigo.data$abslog10pvalue <- abs(as.numeric(as.character(
     revigo.data$log10pvalue)))
